@@ -1,6 +1,17 @@
 # Anki 敲键背词模板
 
+## 效果
+
+输入单词：
+
+![sample-type1](samples/type-1.png)
+
+错误时比对结果：
+
+![sample-type2](samples/type-2.png)
+
 ## ODH 划词插件
+
 桌面客户端在安装 [AnkiConnect](https://ankiweb.net/shared/info/2055492159) (2055492159) 插件后，可以结合 [ODH 浏览器插件](https://chrome.google.com/webstore/detail/online-dictionary-helper/lppjdajkacanlmpbbcdkccjkdbpllajb)使用。ODH 设置如下：
 
 ![ODH 设置](samples/ODH_settings.png)
