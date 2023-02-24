@@ -1,0 +1,25 @@
+/* Github: https://github.com/lesca/anki/mask */
+.card {
+	font-family: "Consolas";
+	font-size: 20px;
+	color: #444;
+	padding: 10px;
+}
+
+.section {
+	border-bottom: 3px solid #666;
+}
+
+.tags {
+	font-size: 18px;
+	line-height: 20px;
+	color: #fff;
+	height: 20px;
+	border-radius: 3px;
+	background-color: #425c74;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 5px 10px;
+	margin-right: 0.2em;
+}

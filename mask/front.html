@@ -1,0 +1,86 @@
+<!-- Github: https://github.com/lesca/anki/mask -->
+
+<div style="display: flex;" class="tags">
+  <div style="flex-grow: 1;"></div>
+  <div style="flex-grow: 1;" align="right">{{#Tags}}标签：{{/Tags}}{{^Tags}}无标签{{/Tags}}</div>
+  <div style="flex-grow: 3;" align="left">{{Tags}}</div>
+  <div style="flex-grow: 3;" align="right">{{Deck}}</div>
+</div>
+
+<div>
+	<div id="title" class="section">{{标题}}</div>
+	<div id="origin_text" style="display: none">{{原文}}</div>
+	<div id="question"></div>
+</div>
+
+<script type="text/javascript">
+  // 中文挖空填入的字符
+  var chinese_mask = '＿';
+  // 其他语言挖空填入的字符
+  var char_mask = '_';
+
+  function setMask() {
+    var word = /([a-zA-Z_'\u00C0-\u024F]+(?![;>])(?=\b))|([\u4e00-\u9fa5])/g;
+    var sentence = /([a-zA-Z_'\u00C0-\u024F\s]+(?![;>])(?=\b))|([\u4e00-\u9fa5]+)/g;
+    var src = document.getElementById("origin_text").innerHTML;
+    var index = 0;
+    // console.log(src)
+    if (mode === "W") {
+      var re = word;
+    } else if (mode === "S") {
+      var re = sentence;
+    }
+    var question = src.replace(re, (match, p1, p2, offset)=>{
+      index++;
+      // console.log(`${index} ${match} ${p1} ${p2} ${match.length}`)
+      if (isMask(index)) {
+        if (p1) {return char_mask.repeat(p1.length);}
+        if (p2) {return chinese_mask.repeat(p2.length);}
+      } else {
+        return match;
+      }
+    });
+    // console.log(question)
+    document.getElementById("question").innerHTML = question;
+  }
+
+  function isMask(index) {
+    if (rate === 0) { // random
+      return (Math.ceil(Math.random() * 100) < 50);
+    } else { // one by one
+      if (maskCounter === Math.ceil(index / rate)) {
+        // console.log(`${index} ${maskCounter} ${masked}`)
+        return masked;
+      } else {
+        masked = !masked;
+        maskCounter = Math.ceil(index / rate);
+        // console.log(`${index} ${maskCounter} ${masked}`)
+        return masked;
+      }
+    }
+  }
+
+  function setMode() {
+    var re = /([SsWw])([1-9]{0,1})/;
+    var matches = maskMode.match(re);
+    if (matches) {
+      mode = matches[1].toUpperCase();
+      rate = parseInt(matches[2]);
+    } else {
+      mode = "W";
+      rate = 0; // random
+    }
+
+    if (rate) {
+      masked = Math.ceil(Math.random() * 100) % 2 ? true : false;
+      maskCounter = 0;
+    } else {
+      rate = 0; // random
+    }
+  }
+
+  var maskMode = "{{text:挖空模式}}";
+  setMode();
+  setMask();
+</script>
+
