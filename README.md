@@ -32,41 +32,41 @@
 
 ## 必备软件或插件
 
-- **桌面端插件**（通常需要重启应用生效）：
+### 桌面插件
 
-  - AnkiConnect
+通常需要重启应用生效
 
-    - [下载](https://ankiweb.net/shared/info/2055492159) - 2055492159
+- AnkiConnect
 
-    - [项目主页](https://foosoft.net/projects/anki-connect/)
+  - [下载](https://ankiweb.net/shared/info/2055492159) - 2055492159
 
-  - ODH (Online Dictionary Helper) 浏览器插件，需结合AnkiConnect使用
+  - [项目主页](https://foosoft.net/projects/anki-connect/)
 
-    - [下载](https://chrome.google.com/webstore/detail/online-dictionary-helper/lppjdajkacanlmpbbcdkccjkdbpllajb)
+- ODH (Online Dictionary Helper) 浏览器插件，需结合AnkiConnect使用
 
-    - [项目主页](https://github.com/ninja33/ODH)
+  - [项目主页](https://github.com/ninja33/ODH)
 
-  - FastBar - 浏览卡片时提供快捷按钮
+- FastBar - 浏览卡片时提供快捷按钮
 
-    - [下载](https://ankiweb.net/shared/info/46611790) - 46611790
+  - [下载](https://ankiweb.net/shared/info/46611790) - 46611790
 
-    - [项目地址](https://github.com/ankipalace/Fastbar-with-nightmode-support)
+  - [项目地址](https://github.com/ankipalace/Fastbar-with-nightmode-support)
 
-- Android：
+### Android：
 
-  - AnkiDroid - Anki 安卓客户端
+- AnkiDroid - Anki 安卓客户端
 
-    - [下载](https://f-droid.org/repository/browse/?fdid=com.ichi2.anki)
+  - [下载](https://f-droid.org/repository/browse/?fdid=com.ichi2.anki)
 
-    - [项目地址](https://github.com/ankidroid/Anki-Android)
+  - [项目地址](https://github.com/ankidroid/Anki-Android)
 
-  - Anki划词助手 - AnkiHelper
+- Anki划词助手 - AnkiHelper
 
-    - [下载](https://www.coolapk.com/apk/com.mmjang.ankihelper)
+  - [下载](https://www.coolapk.com/apk/com.mmjang.ankihelper)
 
-    - [项目地址](https://github.com/mmjang/ankihelper)
+  - [项目地址](https://github.com/mmjang/ankihelper)
 
-    - 注意：语音是URL方式，只能在桌面版Anki播放，无法在AnkiDroid, AnkiMobile播放
+  - 注意：语音是URL方式，只能在桌面版Anki播放，无法在AnkiDroid, AnkiMobile播放
 
 # 进阶
 
