@@ -1,4 +1,4 @@
-<!-- Github: https://github.com/lesca/anki/type -->
+<!-- Github: https://github.com/lesca/anki/ -->
 
 <div style="display: flex;" class="tags">
   <div style="flex-grow: 1;"></div>
@@ -8,18 +8,22 @@
 </div>
 
 <div class="section">
-  <div id="front" class="items">{{type:单词}}</div>
+  <div id="front" class="items">{{单词}}</div>
   <hr>
-  <div id="phonetic" class="items">{{音标}} {{发音}}</div>
+  <div id="phonetic" class="items">{{音标}} {{#发音}}{{发音}}{{/发音}} {{^发音}}[sound:https://dict.youdao.com/dictvoice?audio={{text:单词}}&type=1]{{/发音}}</div>
   <hr>
-  <div id="def" class="items">{{释义}}</div>
+  <div id="def" class="items"><b>{{释义}}</b></div>
+</div>
+
+{{#例句}}
+<div class="section">
   <hr>
   <div id="sentence" class="items">{{例句}}</div>
 </div>
-
+{{/例句}}
 
 <script type="text/javascript">
-  var sen_bold = document.querySelectorAll("#sentence b");
+  var sen_bold = document.querySelectorAll(".section b");
   for (var i = 0; i < sen_bold.length; i++) {
     sen_bold[i].innerHTML = '·'.repeat(sen_bold[i].innerHTML.length);
   }

@@ -1,0 +1,30 @@
+<!-- Github: https://github.com/lesca/anki/ -->
+
+<div style="display: flex;" class="tags">
+  <div style="flex-grow: 1;"></div>
+  <div style="flex-grow: 1;" align="right">{{#Tags}}标签：{{/Tags}}{{^Tags}}无标签{{/Tags}}</div>
+  <div style="flex-grow: 3;" align="left">{{Tags}}</div>
+  <div style="flex-grow: 3;" align="right">{{Deck}}</div>
+</div>
+
+<div class="section">
+  <div id="front" class="items">{{type:单词}}</div>
+  <hr>
+  <div id="phonetic" class="items">{{音标}} {{#发音}}{{发音}}{{/发音}} {{^发音}}[sound:https://dict.youdao.com/dictvoice?audio={{text:单词}}&type=1]{{/发音}}</div>
+  <hr>
+  <div id="def" class="items">{{释义}}</div>
+</div>
+
+{{#例句}}
+<div class="section">
+  <hr>
+  <div id="sentence" class="items">{{例句}}</div>
+</div>
+{{/例句}}
+
+{{#注释}}
+<div class="section">
+  <hr>
+  <div id="note" class="items">{{注释}}</div>
+</div>
+{{/注释}}
