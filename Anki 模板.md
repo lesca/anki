@@ -1,14 +1,42 @@
+# 基础知识
+
+- Anki 的 `模板` 有许多不同的叫法：
+
+  - 英文版Anki中的`Note`或者`Note Types`
+
+  - 中文版Anki中的`笔记`、`笔记类型`
+
+- 从桌面版的UI去理解 `模板` 的构成，其主要包含：
+
+  - `字段` 或者 `Field`
+
+  - `卡片` 或者 `Card`
+
+    - 正面、反面
+
+    - 卡片类型：通常一个模板只有一个卡片类型，每个卡片类型都包含一个卡片正面、一个卡片反面。
+
+*图：Anki模板示例*
+
+- 打开路径：Anki - 工具 - 管理笔记类型
+
+![](pics/note_types.png)
+
 # 用户文档摘要
 
 - [Get Started](https://docs.ankiweb.net/getting-started.html)
 
 - [Cloze 填空](https://docs.ankiweb.net/editing.html#cloze-deletion)
 
-  - Multiple: {{c2::Canberra}} was founded in {{c1::1913}}.
+  - Multiple: `{{c2::Canberra}}` was founded in `{{c1::1913}}`.
 
-  - Hint: {{c1::Canberra::city}} was founded in 1913.
+    - `c1` `c2` 会依次挖空。
 
-  - [填空输入](https://docs.ankiweb.net/templates/fields.html#checking-your-answer):  卡片正面、背面必须都包含 `{{type:cloze:Text}}`，示例如下：
+  - Hint: `{{c1::Canberra::city}}` was founded in 1913.
+
+    - `c1` 会显示 city 作为提示词。
+
+  - [挖空输入](https://docs.ankiweb.net/templates/fields.html#checking-your-answer):  卡片正面、背面必须都包含 `{{type:cloze:Text}}`，被挖空的词会要求输入。示例如下：
 
     ```
     {{cloze:Text}}
@@ -56,7 +84,7 @@
 
   - Rules:
 
-    - Anki will **not** create cards <u>with empty front sides</u>.
+    - Anki will **not** create cards with empty front sides.
 
     - Because of the way that card generation works, it is not possible to manually delete individual cards, as they would just end up being recreated the next time the note was edited.
 
