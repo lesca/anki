@@ -11,8 +11,9 @@ Anki中的牌组`Deck`作为笔记`Note`的容器，可以嵌套，可以设置�
 * **误区**：Anki 中 卡片`Card` 有时候可以指[模板](Anki%20%E6%A8%A1%E6%9D%BF.md)，这里很容易产生误区，需要注意区分。
 
 *图：Anki 笔记模板*
+
 * 点开 **卡片** 实际上是打开 **模板** 编辑界面。
-    ![](pics/note_types_cn.png)
+  ![](pics/note_types_cn.png)
 
 ## Scheduler
 
