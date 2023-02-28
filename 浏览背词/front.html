@@ -12,7 +12,7 @@
   <hr>
   <div id="phonetic" class="items">{{音标}} {{#发音}}{{发音}}{{/发音}} {{^发音}}[sound:https://dict.youdao.com/dictvoice?audio={{text:单词}}&type=1]{{/发音}}</div>
   <hr>
-  <div id="def" class="items"><b>{{释义}}</b></div>
+  <div id="def" class="items">{{释义}}</div>
 </div>
 
 {{#例句}}
@@ -24,12 +24,10 @@
 
 <script type="text/javascript">
   var sen_bold = document.querySelectorAll(".section b");
+  if (sen_bold.length == 0) {
+    sen_bold = document.querySelectorAll("#def");
+  }
   for (var i = 0; i < sen_bold.length; i++) {
     sen_bold[i].innerHTML = '·'.repeat(sen_bold[i].innerHTML.length);
-  }
-
-  var def_bold = document.querySelectorAll("#def b");
-  for (var i = 0; i < def_bold.length; i++) {
-    def_bold[i].innerHTML = '·'.repeat(def_bold[i].innerHTML.length);
   }
 </script>
