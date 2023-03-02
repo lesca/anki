@@ -22,6 +22,8 @@
 
       - 注意：Cloze 类型的模板会**动态创建**`卡片模板`，所以它的`卡片模板`是不可编辑的。
 
+- [Siblings](https://docs.ankiweb.net/studying.html#siblings-and-burying): 如果卡片模板有**多个**卡片类型，例如 `front→back` 卡牌 与 `back→front` 卡牌，他们的数据源是相同的，这种卡牌也叫做 `siblings`。
+
 *图：Anki模板示例*
 
 - 打开路径：Anki - 工具 - 管理笔记类型

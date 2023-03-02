@@ -1,6 +1,18 @@
 此项目主要是对 Anki 相关的整理，包括常用的插件、我创建的模板、整理的文档等。以便让新手能够快速上手。
 
-# 我创建的模板
+# Anki 入门知识
+
+本人总结了 Anki 的一些入门资料，可以让你快速、全面、深入的了解 Anki 的学习、复习的逻辑。推荐以下顺序阅读。
+
+* [基础：Anki 模板介绍](Anki%20%E6%A8%A1%E6%9D%BF.md)
+
+* [基础：Anki 牌组及其设置](Anki%20Deck.md)
+
+* [进阶：Anki Interval 复习间隔时间的计算公式](Anki%20Interval.md)
+
+# 我的模板
+
+这里列举了我维护的模板：
 
 - [随即挖空](%E9%9A%8F%E5%8D%B3%E6%8C%96%E7%A9%BA/): 随机挖空。适用于背课文，可以挖空中文单字、英文单词、以及句子。
 
@@ -14,31 +26,9 @@
 
 - [错题集](%E9%94%99%E9%A2%98%E9%9B%86/): 这是一个简单的错题集模板。
 
-# 整理的 Anki 官方文档链接：
+# 工具及插件
 
-- Anki 网站：
-
-  - [Anki Web](https://ankiweb.net/decks/)
-
-  - [Shared Decks](https://ankiweb.net/shared/decks/)
-
-  - [ankitects / anki 源码](https://github.com/ankitects/anki)
-
-- Anki 文档：
-
-  - [Anki官方文档](https://docs.ankiweb.net/)
-
-  - [AnkiMobile官方文档](https://docs.ankimobile.net/)
-
-  - [AnkiDroid官方文档](https://docs.ankidroid.org/)
-
-- 我的整理：
-
-  - [Anki 模板笔记](Anki%20%E6%A8%A1%E6%9D%BF.md)
-
-# 推荐的工具
-
-## 桌面插件
+## 桌面客户端插件推荐
 
 通常需要重启应用生效
 
@@ -58,7 +48,7 @@
 
   - [项目地址](https://github.com/ankipalace/Fastbar-with-nightmode-support)
 
-## Android：
+## Android 客户端及工具
 
 - AnkiDroid - Anki 安卓客户端
 
@@ -74,9 +64,31 @@
 
   - 注意：语音是URL方式，只能在桌面版Anki播放，无法在AnkiDroid, AnkiMobile播放
 
-## iOS:
+## iOS 客户端
 
 - AnkiMobile：需要付费购买。一些模板可能不兼容。
+
+- 穷穷穷 ::
+
+# 整理的 Anki 官方文档链接：
+
+- Anki 网站：
+
+  - [Anki Web](https://ankiweb.net/decks/)
+
+  - [Shared Decks](https://ankiweb.net/shared/decks/)
+
+- Anki 文档：
+
+  - [Anki官方文档](https://docs.ankiweb.net/)
+
+  - [AnkiMobile官方文档](https://docs.ankimobile.net/)
+
+  - [AnkiDroid官方文档](https://docs.ankidroid.org/)
+
+- Anki 源码：
+
+  - [ankitects / anki](https://github.com/ankitects/anki)
 
 # 进阶
 

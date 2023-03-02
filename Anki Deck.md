@@ -168,47 +168,126 @@ Anki 卡牌有三个基本状态：
 
   * 卡牌按键的说明：
 
-    * `Again` -> 重新从`Learning Steps`的第一步开始，默认为 1min。
+    * `Again` -> 标记为 `lapsed`，同时 `lapses` 计数 +1 （可以在卡牌浏览器中看到）。关于 `Lapses` 的介绍，可以参考 [Lapses (遗忘)](#lapses-%E9%81%97%E5%BF%98)
 
-    * `Hard`, `Good`, `Easy` 的计算方法，请参考 [Anki Interval 的计算](Anki%20Interval.md)
+    * `Hard`, `Good`, `Easy` 的间隔计算方法，请参考 [Anki Interval 的计算](Anki%20Interval.md)
 
 # 其他卡牌状态
 
-整理中。。。
+## 手动状态
 
-* [**Lapses**](https://docs.ankiweb.net/deck-options.html#lapses) (遗忘)
+在卡牌浏览器中，左侧列出了常用的卡牌状态，除了 `New`, `Learning`, `Review` 以外，还有 `Suspended`, `Buried` 状态。
 
-  * When you forget a review card, it is said to have 'lapsed', and the card must be relearnt. The **default behaviour** for lapsed reviews is to reset the interval to 1 (i.e. make it due tomorrow), and put it in the learning queue for a refresher in 10 minutes. This behaviour can be customized with the options listed below.
+![](pics/anki_browse_card_states.png)
 
-  * **Relearning Steps**
+### Bury 搁置
 
-    * The same as 'learning steps', but for forgotten reviews.
+* `Bury`：该操作从复习队列中隐藏所选卡牌，==当日有效==，第二天重新显示在复习队列中。操作方法：
 
-    * When you fail a card (press `Again`), the card enters the **relearning phase**, and before it becomes a **review card** again, you will have to pass all the relearning steps — or, alternatively, press `Easy` on the card.
+  1. 【推荐】在卡牌复习时，按`-`按键 (Bury Card)，搁置当前卡牌，但不搁置其相关的其他`siblings`。
 
-    * If you leave the steps blank, the card will skip relearning, and will be assigned a new review delay.
+  2. 在卡牌复习时，按`=`按键 (Bury Note)，搁置当前卡片及其相关的`siblings`。
 
-  * **Minimum Interval**
+  3. 在卡牌浏览器中选择卡牌，点击`Toogle Bury`。该操作也可以将`Buried`状态的卡牌改回正常状态。
 
-    * Specifies a minimum number of days a card should wait after it finishes relearning. The **default** is **one day**, meaning once relearning is finished, it will be shown again the **next day**.
+* [Siblings](https://docs.ankiweb.net/studying.html#siblings-and-burying): 如果卡片模板有**多个**卡片类型，例如 `front→back` 卡牌 与 `back→front` 卡牌，他们的数据源是相同的，这种卡牌也叫做 `siblings`。
 
-  * **Leeches** 记忆难点
+  * 如果新卡牌或者正在复习的卡牌有有 `siblings`，那么 Anki 会根据【牌组选项】中的 `搁置` 设置决定是否搁置相关联的 `siblings`。默认为【不搁置】。
 
-    * 参考：[Leeches](https://docs.ankiweb.net/leeches.html)
+  * Anki 不会搁置 `Learning` 状态的卡牌。
 
-* **Burying** (搁置)
+*图：Anki Deck Options 中的搁置选项*
+![](pics/anki_deck_options_bury.png)
 
-  * 参考：[siblings-and-burying](https://docs.ankiweb.net/studying.html#siblings-and-burying)
+### Suspend 暂停
+
+* `Suspend`：该操作从复习队列中隐藏所选卡牌，==一直有效==，直到手动去除该状态。操作方法：
+
+  1. 【推荐】在卡牌复习时，按`!`按键 (`Shift + 1`)。
+
+  2. 在卡牌浏览器中选择卡牌，点击`Toogle Suspend`。该操作也可以将`Suspended`状态的卡牌改回正常状态。
+
+### 注意事项
+
+* 一张卡牌不能同时设置 `Suspended` 和 `Buried` 状态。
+
+  > Note: A card cannot be buried and suspended at the same time. Suspending a buried card will unbury it. Burying a suspended card does not work on Anki 2.1.49+, whereas on earlier versions, it will unsuspend the card.
+
+## 按照成熟度区分
+
+在牌组统计中，可以看到`Card Counts`统计数据，除了 `New`, `Learning`, `Suspended`, `Buried` 以外，还有其他状态：`Relearning`, `Young`, `Mature`。
+
+![](pics/anki_card_lifecycle.png)
+
+通过点击不同的状态，可以在卡牌浏览器中查看他们的描述：
+
+* `Relearning`:  `deck:current ("is:review" AND "is:learn")AND -("is:buried" OR "is:suspended")`
+
+  * 同时是 `review` 和 `learn` 的卡牌。一般不会出现，除非在复习中的卡牌上点击了`Again`，但是又没有完成`Learning Steps`。
+
+* `Young`:  `deck:current ("is:review" AND -"is:learn") AND "prop:ivl<21"AND -("is:buried" OR "is:suspended")`
+
+  * 下次复习间隔 `Interval` 小于 21 天的卡牌。
+
+* `Mature`:  `deck:current ("is:review" -"is:learn") AND "prop:ivl>=21"AND -("is:buried" OR "is:suspended")`
+
+  * 下次复习间隔 `Interval` 大于等于 21 天的卡牌。
+
+## [**Lapses**](https://docs.ankiweb.net/deck-options.html#lapses) (遗忘)
+
+如果学习 `Review` 阶段的卡牌时，选择 `Again` ，那么这张卡牌就被认为是 `lapsed`，同时 `lapses` 计数 +1（可以在卡牌浏览器中查看），该卡牌进入 `Relearning` （重学）阶段，并需要重新完成 `Relearning Steps` 后才重新会进入 `Review` 阶段。
+
+具体可以在牌组选项中进行设置：
+
+*图：Deck Options Lapses*
+
+![](pics/anki_deck_options_lapsed.png)
+
+* [Relearning Steps](https://docs.ankiweb.net/deck-options.html#relearning-steps) 重学阶段
+
+  * 注意：中文翻译【重学阶段】是不确切的。
+
+  * 功能与新卡牌的 `Learning Steps` 类似。
+
+  * 如果此处设置为空，那么卡牌会跳过 `Relearning` 并且分配一个新的复习日期。
+
+* [Minimum Interval](https://docs.ankiweb.net/deck-options.html#minimum-interval) 最小间隔
+
+  * 指定至少多少天后可以进入 `Review` 阶段。默认为1天，即 `interval = 1`。
+
+* [Leeches](https://docs.ankiweb.net/leeches.html) 记忆难点
+
+  * 如果 `lapses` 计数达到【**记忆难点阈值**】，即 `Leech Threshold` 默认为 `8`， 那么这张卡牌就会被标记为 `Leeche`。
+
+  * 同时，根据【**记忆难点处理**】设置，即 `Leech Action`，将执行以下行为之一：
+
+    * 仅加标签 (Tag Only)
+
+    * 暂停卡片 (Suspend Card)
+
+  * 发生 `Leech` 后（如果记忆卡片遇到困难的话），有以下处理方式：
+
+    * [Waiting](https://docs.ankiweb.net/leeches.html#waiting)：学习两个易混淆的卡片时，可以暂停学习其中之一，等掌握一个后，再开始学习另一个。
+
+    * [Deleting](https://docs.ankiweb.net/leeches.html#deleting)：删除困难的卡牌，留下重要的卡牌，提升学习乐趣。（有道理，但是为什么不新建一个 Deck 分类那些更重要的卡牌呢？编者注。）
+
+    * [Editing](https://docs.ankiweb.net/leeches.html#editing)：重新组织卡片中的信息，例如添加助记词，高亮重要信息等。
+
+## 其他
 
 * [Reviewing Ahead](https://docs.ankiweb.net/filtered-decks.html#reviewing-ahead)
 
 * [Due Reviews](https://docs.ankiweb.net/filtered-decks.html#due-reviews)
 
-## 参考
+# 参考文档
 
 * [Deck Options](https://docs.ankiweb.net/deck-options.html)
 
 * [Filtered Decks](https://docs.ankiweb.net/filtered-decks.html)
+
+* [siblings-and-burying](https://docs.ankiweb.net/studying.html#siblings-and-burying)
+
+* [Leeches](https://docs.ankiweb.net/leeches.html)
 
 * [Scheduler v2](https://faqs.ankiweb.net/the-anki-2.1-scheduler.html)
 

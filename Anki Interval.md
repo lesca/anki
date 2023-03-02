@@ -1,8 +1,8 @@
-# Interval 的计算方法
+# Anki Interval 的计算方法
 
-本文讨论的时`Review`阶段`Interval`的计算。
+本文讨论 Anki `Review` 阶段卡牌 `Interval` 的计算公式。也就是复习卡牌上，`Hard`, `Good`, `Easy` 所显示的下次复习时间的计算公式。
 
-计算方法受到 [fasiha](https://gist.github.com/fasiha/31ce46c36371ff57fdbc1254af424174) 的启发，根据 [Anki scheduler 源码](https://github.com/ankitects/anki/blob/main/pylib/anki/scheduler/v2.py) 进行总结。
+计算方法受到 [fasiha](https://gist.github.com/fasiha/31ce46c36371ff57fdbc1254af424174) 的启发，根据 [Anki scheduler 源码](https://github.com/ankitects/anki/blob/main/pylib/anki/scheduler/v2.py) 进行总结和验证。
 
 ## 简易度 `Ease` 的作用
 
@@ -72,7 +72,7 @@ card.factor = max(1300, card.factor + [-150, 0, 150][ease - 2])
 
 ![](pics/anki_note_long_duration.png)
 
-### 举个例子
+### 验证
 
 从卡片浏览器中查看，上图中的卡片参数如下：
 
