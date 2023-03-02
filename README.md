@@ -22,6 +22,8 @@
 
   - [Shared Decks](https://ankiweb.net/shared/decks/)
 
+  - [ankitects / anki 源码](https://github.com/ankitects/anki)
+
 - Anki 文档：
 
   - [Anki官方文档](https://docs.ankiweb.net/)
@@ -31,7 +33,8 @@
   - [AnkiDroid官方文档](https://docs.ankidroid.org/)
 
 - 我的整理：
-  - [Anki 模板笔记](Anki%20模板.md)
+
+  - [Anki 模板笔记](Anki%20%E6%A8%A1%E6%9D%BF.md)
 
 # 推荐的工具
 
