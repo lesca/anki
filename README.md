@@ -90,8 +90,6 @@
 
   - [ankitects / anki](https://github.com/ankitects/anki)
 
-# 进阶
+# 开发
 
-- 一些自动化脚本：
-
-  - [automation](/automation/): 基于[AnkiConnect](https://ankiweb.net/shared/info/2055492159)制作的一些自动化接口
+* [开发](dev/)

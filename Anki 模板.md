@@ -51,9 +51,9 @@
 
 ![](pics/anki_browse_card.png)
 
-# 用户文档摘要
+# 模板文档摘要
 
-- [Get Started](https://docs.ankiweb.net/getting-started.html)
+使用模板时，会遇到诸如`{{Field}}`形式的字段引用，本节重点介绍这些引用的功能、用法。
 
 - [Cloze 填空](https://docs.ankiweb.net/editing.html#cloze-deletion)
 
@@ -140,45 +140,3 @@
   - [Media](https://docs.ankiweb.net/media.html)
 
     - If you need a static image or sound on every card, name it with **a leading \_** (e.g., \_dog.jpg) to tell Anki to **ignore it when checking for media**.
-
-# 开发文档摘要
-
-- Anki 项目
-
-  - [Anki Github](https://github.com/ankitects/anki)
-
-- [Anki 插件开发](https://addon-docs.ankiweb.net/)
-
-  - [Debug](https://addon-docs.ankiweb.net/debugging.html)
-
-    - If you set the env var `QTWEBENGINE_REMOTE_DEBUGGING` to `8080` prior to starting Anki, you can surf to http://localhost:8080 in Chrome to debug the visible webpages.
-
-    - `Ctrl+Shift+;` - Open debug console, press `CTRL + ENTER` to run commands.
-
-  - [Hooks](https://addon-docs.ankiweb.net/monkey-patching.html)
-
-    ```python
-    from anki.hooks import wrap
-    from aqt.editor import Editor
-    
-    def mySetupButtons(self, _old):
-        <before code>
-        ret = _old(self)
-        <after code>
-        return ret
-    
-    Editor.setupButtons = wrap(Editor.setupButtons, mySetupButtons, "around")
-    ```
-
-- AnkiDroid
-
-  - [Javascript Inspection](https://github.com/ankidroid/Anki-Android/wiki/Development-Guide#html-javascript-inspection)
-
-  - [Anki Cavas](https://github.com/pigoz/anki-canvas)
-
-  - Eruda Console
-
-    ```javascript
-    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-    <script>eruda.init();</script>
-    ```
