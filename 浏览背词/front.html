@@ -27,7 +27,7 @@
 
 <script type="text/javascript">
   function getPhoneticSymbols(word) {
-    cors_proxy = "http://u.silkdiy.com:3066"
+    cors_proxy = "https://cors.silkdiy.cn"
     fetch(`${cors_proxy}/https://dict.youdao.com/jsonapi_s?q=${word}&le=en&t=2&client=web&sign=30ac8a1fffc5c066d343a8eb2ef8572e&keyfrom=webdict`)
       .then((response) => { return response.json() })
       .catch(error => console.error('Error:', error))
