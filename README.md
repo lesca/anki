@@ -4,6 +4,8 @@
 
 本人总结了 Anki 的一些入门资料，可以让你快速、全面、深入的了解 Anki 的学习、复习的逻辑。推荐以下顺序阅读。
 
+* [基础：Anki 卡片模版](https://open-spaced-repetition.github.io/anki-manual-zh-CN/templates/fields.html)
+
 * [基础：Anki 模板介绍](Anki%20%E6%A8%A1%E6%9D%BF.md)
 
 * [基础：Anki 牌组及其设置](Anki%20Deck.md)
@@ -14,7 +16,7 @@
 
 这里列举了我维护的模板：
 
-- [随即挖空](%E9%9A%8F%E5%8D%B3%E6%8C%96%E7%A9%BA/): 随机挖空。适用于背课文，可以挖空中文单字、英文单词、以及句子。
+- [随机挖空](%E9%9A%8F%E5%8D%B3%E6%8C%96%E7%A9%BA/): 随机挖空。适用于背课文，可以挖空中文单字、英文单词、以及句子。
 
   - 加入了挖空参数，可以根据需要调整。
 
@@ -81,6 +83,8 @@
 - Anki 文档：
 
   - [Anki官方文档](https://docs.ankiweb.net/)
+
+  - [Anki中文文档](https://open-spaced-repetition.github.io/anki-manual-zh-CN/)
 
   - [AnkiMobile官方文档](https://docs.ankimobile.net/)
 
