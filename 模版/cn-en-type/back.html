@@ -47,7 +47,6 @@
   else { document.getElementById("ankidroid_tts").innerHTML = ""; } 
 </script>
 
-
 <script type="text/javascript">
   (() => {
     let typeans = document.getElementById("typeans");
@@ -82,7 +81,11 @@
     // ease2 (hard) when enter key is pressed in retypeInput
     retypeInput.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
-        pycmd('ease2');
+        if (typeof ankidroid !== 'undefined') {
+          window.location.href = "signal:answer_ease2";
+        } else {
+          pycmd('ease2');
+        }
       }
     });
   })();
