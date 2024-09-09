@@ -6,7 +6,7 @@
 
 本人总结的一些干货知识：
 
-* [基础：Anki 模板介绍](docs/Anki_模版.md)
+* [基础：Anki 模板介绍](docs/Anki_NoteType.md)
 
 * [中级：Anki 牌组及其设置](docs/Anki_Decks.md)
 
