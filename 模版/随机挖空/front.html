@@ -1,16 +1,17 @@
 <!-- Github: https://github.com/lesca/anki/mask -->
 
-<div style="display: flex;" class="tags">
-  <div style="flex-grow: 1;"></div>
-  <div style="flex-grow: 1;" align="right">{{#Tags}}标签：{{/Tags}}{{^Tags}}无标签{{/Tags}}</div>
-  <div style="flex-grow: 3;" align="left">{{Tags}}</div>
-  <div style="flex-grow: 3;" align="right">{{Deck}}</div>
-</div>
-
 <div>
 	<div id="title" class="section">{{标题}}</div>
 	<div id="origin_text" style="display: none">{{原文}}</div>
 	<div id="question"></div>
+</div>
+
+<div class="tags">
+  <div style="flex-grow: 1;"></div>
+  <div style="flex-grow: 1;" align="right">{{#Tags}}标签：{{/Tags}}{{^Tags}}无标签{{/Tags}}</div>
+  <div style="flex-grow: 2;" align="left">{{Tags}}</div>
+  <div style="flex-grow: 1;" align="right">牌组：</div>
+  <div style="flex-grow: 2;" align="left">{{Deck}}</div>
 </div>
 
 <script type="text/javascript">
@@ -67,8 +68,8 @@
       mode = matches[1].toUpperCase();
       rate = parseInt(matches[2]);
     } else {
-      mode = "W";
-      rate = 0; // random
+      mode = "S";
+      rate = 1; // random
     }
 
     if (rate) {

@@ -1,32 +1,43 @@
-此项目主要是对 Anki 相关的整理，包括常用的插件、我创建的模板、整理的文档等。以便让新手能够快速上手。
+此项目主要是对 Anki 知识和资源的整理，包括Anki文档、常用模版、插件等。
 
-# Anki 入门知识
+# Anki 文档
 
-本人总结了 Anki 的一些入门资料，可以让你快速、全面、深入的了解 Anki 的学习、复习的逻辑。推荐以下顺序阅读。
+## 学习路径
 
-* [基础：Anki 卡片模版](https://open-spaced-repetition.github.io/anki-manual-zh-CN/templates/fields.html)
+本人总结的一些干货知识：
 
-* [基础：Anki 模板介绍](Anki%20%E6%A8%A1%E6%9D%BF.md)
+* [基础：Anki 模板介绍](docs/Anki_模版.md)
 
-* [基础：Anki 牌组及其设置](Anki%20Deck.md)
+* [中级：Anki 牌组及其设置](docs/Anki_Decks.md)
 
-* [进阶：Anki Interval 复习间隔时间的计算公式](Anki%20Interval.md)
+* [进阶：Anki Interval 复习间隔时间的计算公式](docs/Anki_Interval.md)
 
-# 我的模板
+* [进阶：Anki 开发](docs/Anki_Dev.md)
 
-这里列举了我维护的模板：
+## Anki 官方资源
 
-- [随机挖空](%E9%9A%8F%E5%8D%B3%E6%8C%96%E7%A9%BA/): 随机挖空。适用于背课文，可以挖空中文单字、英文单词、以及句子。
+- Anki 网站：
 
-  - 加入了挖空参数，可以根据需要调整。
+  - [Anki Web](https://ankiweb.net/decks/)
 
-- [敲键背词](%E6%95%B2%E9%94%AE%E8%83%8C%E8%AF%8D/): 敲键背词。模拟文曲星背单词，属于怀旧了。提示中文，输入英文。
+  - [Shared Decks](https://ankiweb.net/shared/decks/)
 
-  - 拓展用法：AnkiDroid + Gboard 输入法 可以实现手写输入。
+- Anki 文档：
 
-- [浏览背词](%E6%B5%8F%E8%A7%88%E8%83%8C%E8%AF%8D/): 与上一个模板相反，这是一个简单的“英-中”模板，提示英文单词或者短语，回想中文意思。
+  - [Anki官方文档](https://docs.ankiweb.net/) （英文版）
 
-- [错题集](%E9%94%99%E9%A2%98%E9%9B%86/): 这是一个简单的错题集模板。
+  - [Anki中文文档](https://open-spaced-repetition.github.io/anki-manual-zh-CN/) 【推荐】
+
+  - [AnkiMobile官方文档](https://docs.ankimobile.net/)
+
+  - [AnkiDroid官方文档](https://docs.ankidroid.org/)
+
+- Anki 源码：
+
+  - [Anki](https://github.com/ankitects/anki) - Desktop 版
+
+  - [AnkiDroid](https://github.com/ankidroid/Anki-Android) - Android 版
+
 
 # 工具及插件
 
@@ -69,31 +80,3 @@
 ## iOS 客户端
 
 - AnkiMobile：需要付费购买。一些模板可能不兼容。
-
-- 穷穷穷 ::
-
-# 整理的 Anki 官方文档链接：
-
-- Anki 网站：
-
-  - [Anki Web](https://ankiweb.net/decks/)
-
-  - [Shared Decks](https://ankiweb.net/shared/decks/)
-
-- Anki 文档：
-
-  - [Anki官方文档](https://docs.ankiweb.net/)
-
-  - [Anki中文文档](https://open-spaced-repetition.github.io/anki-manual-zh-CN/)
-
-  - [AnkiMobile官方文档](https://docs.ankimobile.net/)
-
-  - [AnkiDroid官方文档](https://docs.ankidroid.org/)
-
-- Anki 源码：
-
-  - [ankitects / anki](https://github.com/ankitects/anki)
-
-# 开发
-
-* [开发](dev/)

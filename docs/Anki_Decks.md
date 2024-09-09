@@ -12,19 +12,18 @@ Python 3.9.15 Qt 6.4.2 PyQt 6.4.0
 
 Anki中的牌组`Deck`作为笔记`Note`的容器，可以嵌套，可以设置复习计划。
 
-* 笔记`Note`的类型`Note Type`也叫做[模板](Anki%20%E6%A8%A1%E6%9D%BF.md)或者[模板类型](Anki%20%E6%A8%A1%E6%9D%BF.md)，是一个东西。
+* 笔记(Note)的类型 `Note Type` 也叫做 `模版` 或者 `笔记模版`，它们是同一个东西。
 
-* 笔记`Note`在现实中可以理解为一张一张的复习卡片。
+* 如果你还不知道什么是模版，先去了解 [Anki的模板](Anki_模版.md)。
 
-* **误区**：Anki 中 卡片`Card` 在客户端中有时候指[模板](Anki%20%E6%A8%A1%E6%9D%BF.md)，在文档中有时候指（用于复习的正反面）卡牌，这里很容易产生误区，需要根据上下文区分。
 
 *图：Anki 笔记模板*
 
 * 点开 **卡片** 实际上是打开 **模板** 编辑界面。
 
-  ![](pics/note_types_cn.png)
+  ![](/res/note_types_cn.png)
 
-## Scheduler
+## 编排器 Scheduler
 
 * 用于编排新卡牌的学习计划、旧卡牌的复习计划。
 
@@ -36,7 +35,7 @@ Anki中的牌组`Deck`作为笔记`Note`的容器，可以嵌套，可以设置�
 
 *图：查看Anki Scheduler 版本 (截图基于 Anki V2.1.60)*
 
-![Anki Scheduler Version](pics/scheduler_settings.png)
+![Anki Scheduler Version](/res/scheduler_settings.png)
 
 # 牌组的常用技巧
 
@@ -75,13 +74,17 @@ Anki中的牌组`Deck`作为笔记`Note`的容器，可以嵌套，可以设置�
 
 Anki 卡牌有三个基本状态：
 
-> New -> Learning -> Review
-
+```
+ New -> Learning -> Review
+           ↑          |
+           |__________|
+              (Again)
+```
 这些状态可以从卡牌复习界面看到。
 
 *图：Anki 卡牌的基本状态*
 
-![](pics/anki_notes_lifecycle.png)
+![](/res/anki_notes_lifecycle.png)
 
 不同的卡牌状态对应不同的设置。由于卡牌属于某个牌组，要修改卡牌设置，也就是修改`牌组设置`，点开牌组名称最右侧的齿轮 - 选择”选项“即可查看、修改牌组设置。
 
@@ -89,7 +92,7 @@ Anki 卡牌有三个基本状态：
 
 ## 新卡牌的设置
 
-![](pics/anki_deck_options_new_cards.png)
+![](/res/anki_deck_options_new_cards.png)
 
 * [Learning Steps](https://docs.ankiweb.net/deck-options.html#learning-steps)：牌组选项中 `Learning Steps` (学习阶段) 设置**新卡片**要学习多少次。
 
@@ -119,7 +122,7 @@ Anki 卡牌有三个基本状态：
 
 新版本Anki的[高级设置](https://docs.ankiweb.net/deck-options.html#advanced)主要作用于`Review`阶段的卡牌，早期版本也叫做“Review Settings”。
 
-![](pics/anki_deck_options_andvanced.png)
+![](/res/anki_deck_options_andvanced.png)
 
 * [初始简易度](https://docs.ankiweb.net/deck-options.html#starting-ease) `Starting Ease`：当卡牌从`Learning`阶段进入`Review`阶段后，初始的`简易度`(`Ease`)，默认为2.5，即250%。
 
@@ -131,7 +134,7 @@ Anki 卡牌有三个基本状态：
 
 * [「重来」复习间隔乘数](https://docs.ankiweb.net/deck-options.html#new-interval) `New Interval`：`Review`阶段，`Again`所对应的乘数，默认为0，即从头开始（从`Learning Steps`第一步开始）。
 
-> **Information**
+> [!NOTE]
 > 有关乘数的作用及复习间隔`Interval`的**计算公式**，请参考 [Anki Interval](Anki%20Interval.md) 一文。
 
 ## 卡牌不同状态的按键行为
@@ -178,7 +181,7 @@ Anki 卡牌有三个基本状态：
 
 在卡牌浏览器中，左侧列出了常用的卡牌状态，除了 `New`, `Learning`, `Review` 以外，还有 `Suspended`, `Buried` 状态。
 
-![](pics/anki_browse_card_states.png)
+![](/res/anki_browse_card_states.png)
 
 ### Bury 搁置
 
@@ -197,7 +200,7 @@ Anki 卡牌有三个基本状态：
   * Anki 不会搁置 `Learning` 状态的卡牌。
 
 *图：Anki Deck Options 中的搁置选项*
-![](pics/anki_deck_options_bury.png)
+![](/res/anki_deck_options_bury.png)
 
 ### Suspend 暂停
 
@@ -217,7 +220,7 @@ Anki 卡牌有三个基本状态：
 
 在牌组统计中，可以看到`Card Counts`统计数据，除了 `New`, `Learning`, `Suspended`, `Buried` 以外，还有其他状态：`Relearning`, `Young`, `Mature`。
 
-![](pics/anki_card_lifecycle.png)
+![](/res/anki_card_lifecycle.png)
 
 通过点击不同的状态，可以在卡牌浏览器中查看他们的描述：
 
@@ -241,7 +244,7 @@ Anki 卡牌有三个基本状态：
 
 *图：Deck Options Lapses*
 
-![](pics/anki_deck_options_lapsed.png)
+![](/res/anki_deck_options_lapsed.png)
 
 * [Relearning Steps](https://docs.ankiweb.net/deck-options.html#relearning-steps) 重学阶段
 

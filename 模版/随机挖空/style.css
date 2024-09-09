@@ -1,0 +1,43 @@
+/* Github: https://github.com/lesca/anki/mask */
+.card {
+	font-family: "Consolas";
+	font-size: 20px;
+	color: #444;
+	padding: 10px;
+  }
+  
+  .section {
+	border-bottom: 3px solid #666;
+	display: flex;
+	justify-content: center;
+	/* 水平居中 */
+	align-items: center;
+	/* 垂直居中 */
+  }
+  
+  #origin_text,
+  #question {
+	display: flex;
+	justify-content: center;
+	/* 水平居中 */
+	align-items: center;
+	/* 垂直居中 */
+  }
+  
+  .tags {
+	display: flex;
+	font-size: 1em;
+	line-height: 1.5em;
+	color: #fff;
+	height: 1.5em;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90%;
+	border-radius: 3px;
+	background-color: #425c74;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+  }

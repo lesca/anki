@@ -1,0 +1,53 @@
+<!-- Github: https://github.com/lesca/anki/ -->
+{{#EN-CN}}
+<div class="section">
+  <div id="front" class="items">{{单词}}</div>
+  <hr>
+  <div id="sound" class="items">
+    {{#发音}}{{发音}}{{/发音}}
+    {{^发音}}
+<div id="anki_tts">{{tts zh_CN voices=Apple_Tingting:单词}}</div>
+<div id="ankidroid_tts">[sound:https://dict.youdao.com/dictvoice?audio={{单词}}&type=2]</div>
+    {{/发音}}
+  </div>
+  <div id="phonetic" class="items">
+    {{#音标}}{{音标}}{{/音标}}
+  </div>
+
+{{#例句}}
+<div class="section">
+  <hr>
+  <div id="sentence" class="items">{{例句}}</div>
+</div>
+{{/例句}}
+
+{{#注释}}
+<div class="section">
+  <hr>
+  <div id="note" class="items">{{注释}}</div>
+</div>
+{{/注释}}
+
+</div>
+
+<div class="tags">
+  <div style="flex-grow: 1;"></div>
+  <div style="flex-grow: 1;" align="right">{{#Tags}}标签：{{/Tags}}{{^Tags}}无标签{{/Tags}}</div>
+  <div style="flex-grow: 2;" align="left">{{Tags}}</div>
+  <div style="flex-grow: 1;" align="right">牌组：</div>
+  <div style="flex-grow: 2;" align="left">{{Deck}}</div>
+</div>
+
+<script type="text/javascript">
+  var sen_bold = document.querySelectorAll(".section b");
+  for (var i = 0; i < sen_bold.length; i++) {
+    sen_bold[i].innerHTML = '·'.repeat(sen_bold[i].innerHTML.length);
+  }
+</script>
+
+<script type="text/javascript">
+if (document.documentElement.classList.contains("android")) { document.getElementById("anki_tts").innerHTML = ""; }
+else { document.getElementById("ankidroid_tts").innerHTML = ""; } 
+</script>
+
+{{/EN-CN}}
