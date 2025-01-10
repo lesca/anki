@@ -4,7 +4,7 @@
   <div id="front" class="items">{{type:单词}}</div>
   <hr>
   <div id="sound" class="items">
-    <a href="javascript:void(0)" onclick="tts('{{text:单词}}', 'en-US-AvaMultilingualNeural', 1.0);">▶︎ •၊၊||၊|။||||။ ၊|•</a>
+    <a href="javascript:void(0)" onclick="tts(`{{text:单词}}`, 'en-US-AvaMultilingualNeural', 1.0);">▶︎ •၊၊||၊|။||||။ ၊|•</a>
   </div>
   <div id="phonetic" class="items">
     {{#音标}}{{音标}}{{/音标}}
@@ -56,7 +56,7 @@
     }
 
     // play tts
-    tts("{{text:单词}}", 'en-US-AvaMultilingualNeural', 1.0);
+    tts(`{{text:单词}}`, 'en-US-AvaMultilingualNeural', 1.0);
   })();
 </script>
 

@@ -1,8 +1,8 @@
 .card {
-    font-family: arial;
-    font-size: 1.5em;
-    text-align: center;
-    color: black;
+  font-family: arial;
+  font-size: 1.5em;
+  text-align: center;
+  color: black;
 }
 
 .tags {
@@ -23,8 +23,13 @@
   text-overflow: ellipsis;
 }
 
-#typeans, #retype {
+#typeans,
+#retype {
   width: 100%;
   text-align: center;
   font-size: 1.5em !important;
+}
+
+a {
+  text-decoration: none;
 }
