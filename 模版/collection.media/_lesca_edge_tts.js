@@ -2,7 +2,7 @@
 // edge tts
 var ttsURL = "https://cors.silkdiy.cn/edgetts/v1/audio/speech";
 // tts and play
-var tts = (input) => {
+var tts = (input, voice = "zh-CN-XiaoxiaoNeural", speed = 1.0) => {
     fetch(ttsURL, {
         method: 'POST',
         headers: {
@@ -10,9 +10,9 @@ var tts = (input) => {
         },
         body: JSON.stringify({
             input: input,
-            voice: "zh-CN-XiaoxiaoNeural",
+            voice: voice,
             response_format: "mp3",
-            speed: 1.0
+            speed: speed
         })
     })
         .then(response => response.arrayBuffer())

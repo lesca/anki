@@ -1,0 +1,56 @@
+<!-- Github: https://github.com/lesca/anki/ -->
+<div class="section">
+    <div id="front" class="items">{{cloze:填空}}</div>
+    <hr>
+    <div id="sound" class="items">
+        <a href="javascript:void(0)" onclick="tts('{{text:单词}}', 'en-US-AvaMultilingualNeural', 1.0);">▶︎ •၊၊||၊|။||||။၊|•</a>
+    </div>
+</div>
+<div id="phonetic" class="items">
+    {{#音标}}{{音标}}{{/音标}}
+</div>
+<hr>
+<div class="items">{{图片}}</div>
+<hr>
+<div id="front" class="items">{{释义}}</div>
+</div>
+
+<div class="tags">
+    <div style="flex-grow: 1;"></div>
+    <div style="flex-grow: 1;" align="right">{{#Tags}}标签：{{/Tags}}{{^Tags}}无标签{{/Tags}}</div>
+    <div style="flex-grow: 2;" align="left">{{Tags}}</div>
+    <div style="flex-grow: 1;" align="right">牌组：</div>
+    <div style="flex-grow: 2;" align="left">{{Deck}}</div>
+</div>
+
+<script type="text/javascript">
+    var sen_bold = document.querySelectorAll(".section b");
+    for (var i = 0; i < sen_bold.length; i++) {
+        sen_bold[i].innerHTML = '·'.repeat(sen_bold[i].innerHTML.length);
+    }
+</script>
+
+<script type="text/javascript">
+    var injectScript = (src) => {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = () => {
+                const errorDiv = document.getElementById('error');
+                errorDiv.textContent = '加载脚本失败，请检查网络连接并刷新页面重试。';
+            };
+            document.head.appendChild(script);
+        });
+    };
+
+    (async () => {
+        if (typeof tts === "undefined") {
+            await injectScript("_lesca_edge_tts.js");
+        }
+
+        // play tts
+        tts("{{text:cloze:填空}}", 'en-US-AvaMultilingualNeural', 1.0);
+    })();
+</script>

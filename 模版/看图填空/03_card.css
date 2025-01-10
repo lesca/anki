@@ -1,0 +1,39 @@
+.card {
+    font-family: arial;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+    background-color: white;
+}
+.cloze {
+    font-weight: bold;
+    color: blue;
+}
+.nightMode .cloze {
+    color: lightblue;
+}
+
+.tags {
+  display: flex;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #fff;
+  height: 1.5em;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  border-radius: 3px;
+  background-color: #425c74;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.items img {
+    width: auto;
+    /* 35% of the viewport height */
+    height: 25vw;
+}
