@@ -1,0 +1,82 @@
+<!-- Github: https://github.com/lesca/anki/ -->
+<script>
+    var pinyinURL = "_pinyin.json";
+    // var pinyinURL = "https://gist.githubusercontent.com/LogStar100/435c92b551a7e48e8eb3e1350a12cce3/raw/b382b93ea141bf0a8e8ba1a60945d9f6622ebe76/kMandarin.json"
+    var pinyinData;
+
+    var injectScript = (src) => {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = () => {
+                const errorDiv = document.getElementById('error');
+                errorDiv.textContent = '加载脚本失败，请检查网络连接并刷新页面重试。';
+            };
+            document.head.appendChild(script);
+        });
+    };
+
+    (async () => {
+        if (typeof HanziWriter === "undefined") {
+            await injectScript("https://cdn.jsdelivr.net/npm/hanzi-writer@2.2/dist/hanzi-writer.min.js");
+        }
+
+        // get pinyin data
+        await $.getJSON(pinyinURL, function (data) { pinyinData = data; });
+
+        // 拆分词语成字
+        const chars = '{{text:词语}}'.split('');
+
+        // 动态创建字符书写区域
+        const writingContainer = document.getElementById('writing');
+        chars.forEach((char, index) => {
+            // add div char-box to writingContainer
+            const charBox = document.createElement('div');
+            charBox.id = `char-box-${index + 1}`;
+            charBox.classList.add('char-box');
+            writingContainer.appendChild(charBox);
+            // add div grid-box
+            const gridBox = document.createElement('div');
+            gridBox.id = `grid-box-${index + 1}`;
+            gridBox.classList.add('grid-box');
+            charBox.appendChild(gridBox);
+            // add div char-container to gridBox
+            const charContainer = document.createElement('div');
+            charContainer.id = `char-container-${index + 1}`;
+            charContainer.classList.add('char-container');
+            gridBox.appendChild(charContainer);
+            // add div pinyin to charContainer
+            const pinyin = document.createElement('div');
+            pinyin.id = `pinyin-${index + 1}`;
+            pinyin.classList.add('pinyin');
+            pinyin.textContent = pinyinData[char];
+            charBox.appendChild(pinyin);
+        });
+
+        const writers = chars.map((char, index) => {
+            return HanziWriter.create(`char-container-${index + 1}`, char, {
+                width: 250,
+                height: 250,
+                showOutline: false,
+                showHintAfterMisses: 1,
+                strokeAnimationSpeed: 5, // 5x normal speed
+                delayBetweenStrokes: 10, // milliseconds
+                radicalColor: '#337ab7', // blue
+                padding: 5,
+                drawingWidth: 35
+            });
+        });
+
+        // Start quiz for all characters
+        writers.forEach(writer => writer.animateCharacter());
+    })();
+
+
+</script>
+
+<div id="writing">
+    <!-- 动态生成的字符书写区域将在这里创建 -->
+</div>
+<div id="error"></div>
