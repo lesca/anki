@@ -21,15 +21,15 @@
   var char_mask = '_';
 
   function setMask() {
-    var word = /([a-zA-Z_'\u00C0-\u024F]+(?![;>])(?=\b))|([\u4e00-\u9fa5])/g;
-    var sentence = /([a-zA-Z_'\u00C0-\u024F\s]+(?![;>])(?=\b))|([\u4e00-\u9fa5]+)/g;
+    var re_word = /([a-zA-Z_'\u00C0-\u024F]+(?![;>])(?=\b))|([\u4e00-\u9fa5])/g;
+    var re_sentence = /([a-zA-Z_'\u00C0-\u024F\s]+(?![;>])(?=\b))|([\u4e00-\u9fa5]+)/g;
     var src = document.getElementById("origin_text").innerHTML;
     var index = 0;
     // console.log(src)
     if (mode === "W") {
-      var re = word;
+      var re = re_word;
     } else if (mode === "S") {
-      var re = sentence;
+      var re = re_sentence;
     }
     var question = src.replace(re, (match, p1, p2, offset)=>{
       index++;
