@@ -1,6 +1,6 @@
 // Github: https://github.com/lesca/anki/
 // edge tts
-var ttsURL = "https://cors.silkdiy.cn/edgetts/v1/audio/speech";
+var ttsURL = "https://cors.silkdiy.com/edgetts/v1/audio/speech";
 // tts and play
 var tts = (input, voice = "zh-CN-XiaoxiaoNeural", speed = 1.0) => {
     fetch(ttsURL, {

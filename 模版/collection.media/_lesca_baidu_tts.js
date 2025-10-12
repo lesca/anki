@@ -1,5 +1,5 @@
 // Github: https://github.com/lesca/anki/
-var corsProxy = "https://cors.silkdiy.cn/baidutts";
+var corsProxy = "https://cors.silkdiy.com/baidutts";
 var ttsURL = "https://fanyi.baidu.com/gettts"; // cors proxy to this url
 
     // tts and play
