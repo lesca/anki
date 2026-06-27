@@ -23,6 +23,11 @@
   text-overflow: ellipsis;
 }
 
+div.marked {
+  background-color: #FFDDFF;
+  color: #DD33DD;
+}
+
 #typeans,
 #retype {
   width: 100%;

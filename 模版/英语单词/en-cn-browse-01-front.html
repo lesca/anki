@@ -1,8 +1,7 @@
 <!-- Github: https://github.com/lesca/anki/ -->
-<div id="back" class="items">
-  <input type="text" id="retype" placeholder="{{单词}}">
-  {{type:单词}}
-</div>
+<!-- 默写，或者，英译中 -->
+{{^默写}}
+<div id="front" class="items">{{单词}}</div>
 <hr>
 <div id="sound" class="items">
   <a href="javascript:void(0)" onclick="tts_word();">▶︎ 真人发音</a>
@@ -11,8 +10,8 @@
   {{#音标}}{{音标}}{{/音标}}
 </div>
 <hr>
-<div class="items">{{释义}}</div>
 <div class="section">
+  <div class="items"><b>{{释义}}</b></div>
   {{#原文}}
   <hr>
   <a href="javascript:void(0)" onclick="tts_sentence();">▶︎ 朗读原文</a>
@@ -29,7 +28,7 @@
   {{/例句}}
 </div>
 
-<div class="tags">
+<div class="tags {{Tags}}">
   <div style="flex-grow: 1;"></div>
   <div style="flex-grow: 1;" align="right">{{#Tags}}标签：{{/Tags}}{{^Tags}}无标签{{/Tags}}</div>
   <div style="flex-grow: 2;" align="left">{{Tags}}</div>
@@ -54,7 +53,7 @@
 
   (async () => {
     if (typeof tts === "undefined") {
-      await injectScript("_lesca_edge_tts.js");
+      await injectScript("_lesca_baidu_tts.js");
     }
 
     // play tts
@@ -73,45 +72,28 @@
 </script>
 
 <script type="text/javascript">
-  (() => {
-    let typeans = document.getElementById("typeans");
-    let retypeInput = document.getElementById("retype");
-    let word = "{{单词}}";
+  // regular expression of word and sentence (p1 is English, p2 is Chinese)
+  var re_word = /([a-zA-Z_'\u00C0-\u024F]+(?![;>])(?=\b))|([\u4e00-\u9fa5])/g;
+  var re_sentence = /([a-zA-Z_'\u00C0-\u024F\s]+(?![;>])(?=\b))|([\u4e00-\u9fa5]+)/g;
+  // 中文挖空填入的字符
+  var chinese_mask = '＿';
+  // 其他语言挖空填入的字符
+  var char_mask = '_';
 
-    // script to check if the word is correct
-    if (typeans && typeans.textContent.includes("↓")) {
-      // answer is not correct
-      typeans.style.display = "none";
-      retypeInput.focus();
-    } else {
-      // answer is correct
-      retypeInput.style.display = "none";
-    }
+  // replace {{单词}} with <b>{{单词}}</b>
+  var front_word = `{{text:单词}}`;
+  var section_content = document.querySelectorAll(".section");
+  section_content.forEach(content => {
+    content.innerHTML = content.innerHTML.replace(new RegExp(front_word, 'g'), `<b>${front_word}</b>`);
+  });
 
-    // script to handle input event in retypeInput
-    retypeInput.addEventListener("input", () => {
-      let letters = retypeInput.value.split("");
-      let allCorrect = true;
-
-      letters.forEach((letter, i) => {
-        if (allCorrect && letter === word[i]) {
-          retypeInput.style.color = "green";
-        } else {
-          retypeInput.style.color = "red";
-          allCorrect = false;
-        }
-      });
+  // replace <b></b> with mask '＿' or '_'
+  var sen_bold = document.querySelectorAll(".section b");
+  sen_bold.forEach(bold => {
+    bold.innerHTML = bold.innerHTML.replace(re_word, (match, p1, p2, offset) => {
+      if (p1) { return char_mask.repeat(p1.length); }
+      if (p2) { return chinese_mask.repeat(p2.length); }
     });
-
-    // ease2 (hard) when enter key is pressed in retypeInput
-    retypeInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        if (typeof ankidroid !== 'undefined') {
-          window.location.href = "signal:answer_ease2";
-        } else {
-          pycmd('ease2');
-        }
-      }
-    });
-  })();
+  });
 </script>
+{{/默写}}

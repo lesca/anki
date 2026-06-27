@@ -1,0 +1,124 @@
+<!-- Github: https://github.com/lesca/anki/ -->
+{{#默写}}
+<div id="back" class="items">
+  <input type="text" id="retype" placeholder="{{单词}}">
+  {{type:单词}}
+</div>
+{{/默写}}
+
+{{^默写}}
+<div id="back" class="items">{{单词}}</div>
+{{/默写}}
+
+<hr>
+<div id="sound" class="items">
+  <a href="javascript:void(0)" onclick="tts_word();">▶︎ 真人发音</a>
+</div>
+<div id="ipa" class="items">
+  {{#音标}}{{音标}}{{/音标}}
+</div>
+<hr>
+<div class="items">{{释义}}</div>
+<div class="section">
+  {{#原文}}
+  <hr>
+  <a href="javascript:void(0)" onclick="tts_sentence();">▶︎ 朗读原文</a>
+  <div class="items">{{原文}}</div>
+  <div class="items">{{翻译}}</div>
+  {{/原文}}
+  {{#注释}}
+  <hr>
+  <div class="items">{{注释}}</div>
+  {{/注释}}
+  {{#例句}}
+  <hr>
+  <div class="items">{{例句}}</div>
+  {{/例句}}
+</div>
+
+<div class="tags {{Tags}}">
+  <div style="flex-grow: 1;"></div>
+  <div style="flex-grow: 1;" align="right">{{#Tags}}标签：{{/Tags}}{{^Tags}}无标签{{/Tags}}</div>
+  <div style="flex-grow: 2;" align="left">{{Tags}}</div>
+  <div style="flex-grow: 1;" align="right">牌组：</div>
+  <div style="flex-grow: 2;" align="left">{{Deck}}</div>
+</div>
+
+<script type="text/javascript">
+  var injectScript = (src) => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      script.onload = resolve;
+      script.onerror = () => {
+        const errorDiv = document.getElementById('error');
+        errorDiv.textContent = '加载脚本失败，请检查网络连接并刷新页面重试。';
+      };
+      document.head.appendChild(script);
+    });
+  };
+
+  (async () => {
+    if (typeof tts === "undefined") {
+      await injectScript("_lesca_baidu_tts.js");
+    }
+
+    // play tts
+    tts(`{{text:单词}}`, 'en-US-AvaMultilingualNeural', 1.0);
+  })();
+</script>
+
+<script type="text/javascript">
+  function tts_word() {
+    tts(`{{text:单词}}`, 'en-US-AvaMultilingualNeural', 1.0);
+  }
+
+  function tts_sentence() {
+    tts(`{{text:原文}}`, 'en-US-AvaMultilingualNeural', 1.0);
+  }
+</script>
+
+<script type="text/javascript">
+  (() => {
+    let typeans = document.getElementById("typeans");
+    let retypeInput = document.getElementById("retype");
+    let word = "{{单词}}";
+
+    // script to check if the word is correct
+    if (typeans && typeans.textContent.includes("↓")) {
+      // answer is not correct
+      typeans.style.display = "none";
+      retypeInput.focus();
+    } else {
+      // answer is correct
+      retypeInput.style.display = "none";
+    }
+
+    // script to handle input event in retypeInput
+    retypeInput.addEventListener("input", () => {
+      let letters = retypeInput.value.split("");
+      let allCorrect = true;
+
+      letters.forEach((letter, i) => {
+        if (allCorrect && letter === word[i]) {
+          retypeInput.style.color = "green";
+        } else {
+          retypeInput.style.color = "red";
+          allCorrect = false;
+        }
+      });
+    });
+
+    // ease2 (hard) when enter key is pressed in retypeInput
+    retypeInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        if (typeof ankidroid !== 'undefined') {
+          window.location.href = "signal:answer_ease2";
+        } else {
+          pycmd('ease2');
+        }
+      }
+    });
+  })();
+</script>

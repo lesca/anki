@@ -5,11 +5,11 @@
   <a href="javascript:void(0)" onclick="tts_word();">▶︎ 真人发音</a>
 </div>
 <div id="ipa" class="items">
-  {{#音标}}{{音标}}{{/音标}}
+
 </div>
 <hr>
 <div class="section">
-  <div class="items"><b>{{释义}}</b></div>
+  <div class="items">{{释义}}</div>
   {{#原文}}
   <hr>
   <a href="javascript:void(0)" onclick="tts_sentence();">▶︎ 朗读原文</a>
@@ -26,7 +26,7 @@
   {{/例句}}
 </div>
 
-<div class="tags">
+<div class="tags {{Tags}}"">
   <div style="flex-grow: 1;"></div>
   <div style="flex-grow: 1;" align="right">{{#Tags}}标签：{{/Tags}}{{^Tags}}无标签{{/Tags}}</div>
   <div style="flex-grow: 2;" align="left">{{Tags}}</div>
@@ -51,11 +51,11 @@
 
   (async () => {
     if (typeof tts === "undefined") {
-      await injectScript("_lesca_edge_tts.js");
+      await injectScript("_lesca_baidu_tts.js");
     }
 
     // play tts
-    tts(`{{text:单词}}`, 'en-US-AvaMultilingualNeural', 1.0);
+    // tts(`{{text:单词}}`, 'en-US-AvaMultilingualNeural', 1.0);
   })();
 </script>
 
@@ -67,30 +67,4 @@
   function tts_sentence() {
     tts(`{{text:原文}}`, 'en-US-AvaMultilingualNeural', 1.0);
   }
-</script>
-
-<script type="text/javascript">
-  // regular expression of word and sentence (p1 is English, p2 is Chinese)
-  var re_word = /([a-zA-Z_'\u00C0-\u024F]+(?![;>])(?=\b))|([\u4e00-\u9fa5])/g;
-  var re_sentence = /([a-zA-Z_'\u00C0-\u024F\s]+(?![;>])(?=\b))|([\u4e00-\u9fa5]+)/g;
-  // 中文挖空填入的字符
-  var chinese_mask = '＿';
-  // 其他语言挖空填入的字符
-  var char_mask = '_';
-
-  // replace {{单词}} with <b>{{单词}}</b>
-  var front_word = `{{text:单词}}`;
-  var section_content = document.querySelectorAll(".section");
-  section_content.forEach(content => {
-    content.innerHTML = content.innerHTML.replace(new RegExp(front_word, 'g'), `<b>${front_word}</b>`);
-  });
-
-  // replace <b></b> with mask '＿' or '_'
-  var sen_bold = document.querySelectorAll(".section b");
-  sen_bold.forEach(bold => {
-    bold.innerHTML = bold.innerHTML.replace(re_word, (match, p1, p2, offset) => {
-      if (p1) { return char_mask.repeat(p1.length); }
-      if (p2) { return chinese_mask.repeat(p2.length); }
-    });
-  });
 </script>
